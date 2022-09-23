@@ -7,6 +7,13 @@
     <title>Document</title>
   </head>
   <body>
-    New Page
+    <script>
+      let url = window.location.search;
+      if (url === "?q=NPTEL22CS31544546") {
+        window.write("Test");
+      } else {
+        window.write("Fail");
+      }
+    </script>
   </body>
 </html>
