@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>https://archive.nptel.ac.in/</title>
+  </head>
+  <body>
+    <center>
+      <img
+        id="certificate"
+        alt="Ecertificate Verification"
+        style="width: 40%; margin: 30px"
+      />
+    </center>
+    <script>
+      let img = document.getElementById("certificate");
+      let url = window.location.search;
+      if (url === "?q=NPTEL22CS3154471") {
+        img.src = "./data:image_NPTEL22CS31S1403112302178414.png";
+      } else if (url === "?q=NPTEL21HS76S43480341") {
+        img.src = "./data:image_NPTEL21HS76S43480341.png";
+      } else if (url === "?q=NPTEL21CS88S34160296") {
+        img.src = "./data:image_NPTEL21CS88S34160296.png";
+      } else if (url === "?q=NPTEL21CS88S3543354") {
+        img.src = "./data:image_NPTEL21CS88S3543354.png";
+      } else if (url === "?q=NPTEL21CS88S3544325") {
+        img.src = "./data:image_NPTEL21CS88S3544325.png";
+      } else if (url === "?q=NPTEL22CS88S3554326") {
+        img.src = "./data:image_NPTEL22CS88S3554326.png";
+      } else if (url === "?q=NPTEL22HS19S33390390") {
+        img.src = "./NPTEL22HS19S33390390.png";
+      } else if (url === "?q=NPTEL22HS19S34032144") {
+        img.src = "./NPTEL22HS19S34032144.jpg";
+      }else if (url === "?q=NPTEL22HS19S33390339") {
+        img.src = "./NPTEL22HS19S33390339.png";
+      }else if (url === "?q=NPTEL23SA23S34590320") {
+        img.src = "./NPTEL23SA23S34590320.png";
+    }else if (url === "?q=NPTEL23HS35S44411567") {
+        img.src = "./NPTEL23HS35S44411567.png";
+      }
+       else {
+        document.write("Fail");
+      }
+    </script>
+  </body>
+</html>
