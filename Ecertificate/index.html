@@ -16,57 +16,67 @@
     </center>
     <script>
       let url = window.location.search;
-      const center = document.getElementById("center");
-
-      async function checkFileExists(filePath) {
-            try {
-                const response = await fetch(filePath, { method: 'HEAD' });
-                // If the response is ok (status 200), return true
-                return response.ok;
-            } catch (error) {
-                console.error('Error checking file:', error);
-                return false;
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", async function () {
-            const downloadButton = document.getElementById('downloadButton');
-            const filePath = `./pdf/${url.replace("?q=", "")}.pdf`;
-
-            // Check if the file exists
-            const fileExists = await checkFileExists(filePath);
-
-            // If the file exists, display the button and set the href
-            if (fileExists) {
-                const btn = document.createElement('a');
-                btn.setAttribute("href", `./pdf/${url.replace("?q=", "")}.pdf`);
-                
-                btn.style.color = "white";
-                btn.style.backgroundColor = "#3070bf";
-                btn.style.padding = "10px 20px";
-                btn.style.borderRadius = "8px";
-                btn.style.textDecoration = "none";
-                btn.style.display = "inline-block";
-                btn.style.width = "156px";
-                btn.textContent = "Course Certificate";
-                
-                center.innerHTML = "";
-                center.appendChild(btn);  
-
-                center.style.position = "absolute";
-                center.style.top = "40%";
-                center.style.left = "50%";
-                center.style.transform = "translate(-50%, -50%)";
-            } else {
-              center.innerHTML = "<h2>Sorry you dont have a Certificate!.Please contact support@nptel.iitm.ac.in</h2>";
-            }
-        });
-
-      let img = document.getElementById("certificate");
-      if(url){
-        img.src = `./${url.replace("?q=", "")}.png`;
-      }else{
+      if(!url){
         document.write("Fail");
+      }
+      else{
+        const center = document.getElementById("center");
+
+        async function checkFileExists(filePath) {
+              try {
+                  const response = await fetch(filePath, { method: 'HEAD' });
+                  // If the response is ok (status 200), return true
+                  return response.ok;
+              } catch (error) {
+                  console.error('Error checking file:', error);
+                  return false;
+              }
+          }
+
+          document.addEventListener("DOMContentLoaded", async function () {
+              const downloadButton = document.getElementById('downloadButton');
+              const filePath = `./pdf/${url.replace("?q=", "")}.pdf`;
+
+              // Check if the file exists
+              const fileExists = await checkFileExists(filePath);
+
+              // If the file exists, display the button and set the href
+              if (fileExists) {
+                  const btn = document.createElement('a');
+                  btn.setAttribute("href", `./pdf/${url.replace("?q=", "")}.pdf`);
+                  btn.setAttribute("target", "_blank");
+                  
+                  btn.style.color = "white";
+                  btn.style.backgroundColor = "#3070bf";
+                  btn.style.padding = "10px 20px";
+                  btn.style.borderRadius = "8px";
+                  btn.style.textDecoration = "none";
+                  btn.style.display = "inline-block";
+                  btn.style.width = "156px";
+                  btn.textContent = "Course Certificate";
+                  
+                  center.innerHTML = "";
+                  center.appendChild(btn);  
+
+                  center.style.position = "absolute";
+                  center.style.top = "40%";
+                  center.style.left = "50%";
+                  center.style.transform = "translate(-50%, -50%)";
+              } else {
+                
+                const filePath = `./${url.replace("?q=", "")}.png`;
+                const fileExists = await checkFileExists(filePath);
+                
+                if(fileExists){
+                  let img = document.getElementById("certificate");
+                  if(url){
+                    img.src = `./${url.replace("?q=", "")}.png`;
+                  }
+                }else{
+                  center.innerHTML = "<h2 style='margin:0'>Sorry you dont have a Certificate!.Please contact support@nptel.iitm.ac.in</h2>";
+                }
+              }
+          });
       }
     </script>
   </body>
