@@ -7,7 +7,7 @@
     <title>https://archive.nptel.ac.in/</title>
   </head>
   <body>
-    <center>
+    <center id="center">
       <img
         id="certificate"
         alt="Ecertificate Verification"
@@ -15,8 +15,46 @@
       />
     </center>
     <script>
-      let img = document.getElementById("certificate");
       let url = window.location.search;
+      const center = document.getElementById("center");
+
+      async function checkFileExists(filePath) {
+            try {
+                const response = await fetch(filePath, { method: 'HEAD' });
+                // If the response is ok (status 200), return true
+                return response.ok;
+            } catch (error) {
+                console.error('Error checking file:', error);
+                return false;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", async function () {
+            const downloadButton = document.getElementById('downloadButton');
+            const filePath = `./pdf/${url.replace("?q=", "")}.pdf`;
+
+            // Check if the file exists
+            const fileExists = await checkFileExists(filePath);
+
+            // If the file exists, display the button and set the href
+            if (fileExists) {
+                const btn = document.createElement('button');
+                btn.setAttribute(href, `./pdf/${url.replace("?q=", "")}.pdf`);
+                
+                btn.style.color = "white";
+                btn.style.backgroundColor = "#3070bf";
+                btn.style.padding = "10px 20px";
+                btn.style.borderRadius = "8px";
+                btn.style.textDecoration = "none";
+                btn.style.display = "inline-block";
+                btn.style.width = "156px";
+                center.innerHTML = btn;
+            } else {
+              center.innerHTML = "Sorry you dont have a Certificate!.Please contact support@nptel.iitm.ac.in";
+            }
+        });
+
+      let img = document.getElementById("certificate");
       if(url){
         img.src = `./${url.replace("?q=", "")}.png`;
       }else{
