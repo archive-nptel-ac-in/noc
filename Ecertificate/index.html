@@ -38,7 +38,7 @@
 
             // If the file exists, display the button and set the href
             if (fileExists) {
-                const btn = document.createElement('button');
+                const btn = document.createElement('a');
                 btn.setAttribute("href", `./pdf/${url.replace("?q=", "")}.pdf`);
                 
                 btn.style.color = "white";
@@ -48,15 +48,17 @@
                 btn.style.textDecoration = "none";
                 btn.style.display = "inline-block";
                 btn.style.width = "156px";
+                btn.textContent = "Course Certificate";
                 
-                center.innerHTML = btn;
+                center.innerHTML = "";
+                center.appendChild(btn);  
 
                 center.style.position = "absolute";
                 center.style.top = "40%";
                 center.style.left = "50%";
                 center.style.transform = "translate(-50%, -50%)";
             } else {
-              center.innerHTML = "Sorry you dont have a Certificate!.Please contact support@nptel.iitm.ac.in";
+              center.innerHTML = "<h2>Sorry you dont have a Certificate!.Please contact support@nptel.iitm.ac.in</h2>";
             }
         });
 
