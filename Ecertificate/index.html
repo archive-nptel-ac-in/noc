@@ -68,9 +68,16 @@
                 const fileExists = await checkFileExists(filePath);
                 
                 if(fileExists){
-                  let img = document.getElementById("certificate");
+                  // let img = document.getElementById("certificate");
+                  const img = document.createElement('img');
+                  img.setAttribute("alt","Ecertificate Verification");
+                  img.style.width = "40%";
+                  img.style.margin = "30px";
                   if(url){
-                    img.src = `./${url.replace("?q=", "")}.png`;
+                    img.setAttribute("src", `./${url.replace("?q=", "")}.png`);
+                    center.innerHTML = "";
+                    center.appendChild(img); 
+                    // img.src = `./${url.replace("?q=", "")}.png`;
                   }
                 }else{
                   center.innerHTML = "<h2 style='margin:0'>Sorry you dont have a Certificate!.Please contact support@nptel.iitm.ac.in</h2>";
